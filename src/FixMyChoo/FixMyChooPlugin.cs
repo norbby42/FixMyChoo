@@ -6,26 +6,21 @@ using FixMyChoo.Patches;
 
 namespace FixMyChoo;
 
-/*
-  Here are some basic resources on code style and naming conventions to help
-  you in your first CSharp plugin!
-
-  https://learn.microsoft.com/en-us/dotnet/csharp/fundamentals/coding-style/coding-conventions
-  https://learn.microsoft.com/en-us/dotnet/csharp/fundamentals/coding-style/identifier-names
-  https://learn.microsoft.com/en-us/dotnet/standard/design-guidelines/names-of-namespaces
-*/
-
 [BepInPlugin(LCMPluginInfo.PLUGIN_GUID, LCMPluginInfo.PLUGIN_NAME, LCMPluginInfo.PLUGIN_VERSION)]
 public class Plugin : BaseUnityPlugin
 {
     internal static ManualLogSource Log = null!;
     internal static FixMyChooSettings Settings = null!;
+    internal static SavegameLoadedWatcher SavegameWatcher = null!;
 
     private void Awake()
     {
         Log = Logger;
 
         Settings = new(Config);
+
+        // Start watching for savegame to be loaded
+        SavegameWatcher = new SavegameLoadedWatcher();
 
         // Log our awake here so we can see it in LogOutput.txt file
         Log.LogInfo($"Plugin {LCMPluginInfo.PLUGIN_NAME} version {LCMPluginInfo.PLUGIN_VERSION} is loaded!");
@@ -37,8 +32,10 @@ public class Plugin : BaseUnityPlugin
             Log.LogInfo($" Patching derailed train recovery.");
             myHarmony.PatchAll(typeof(TrackTrainRerail));
         }
-        
-
+        if (Settings.UpdateCouplerVisualsOnLoad.Value)
+        {
+            myHarmony.PatchAll(typeof(TrainVisualPatches));
+        }
     }
 
 }
