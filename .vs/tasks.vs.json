@@ -2,7 +2,8 @@
   "version": "0.2.1",
   "tasks": [
     {
-      "taskName": "Dry-run package test",
+      "taskLabel": "Dry-run package test",
+      "appliesTo": "*",
       "type": "shell",
       "command": "dotnet build -p:DeployToProd=true"
     }
