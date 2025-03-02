@@ -1,12 +1,13 @@
 # FixMyChoo
 
 Small mod for Obenseuer.
-Makes some minor improvements and bugfixes to the minitrains.  Of note, it will rerail trains that have been "confused" by being displaced during a tenement upgrade.
+Makes some minor improvements and bugfixes to the minitrains.  Of note, it will rerail trains that have been "confused" by being displaced during a tenement upgrade, and will separate wagons that are "ghost" attached to each other (ie they move at the same time, but are not physically coupled).
 
 ## Installation
 
-Just like all other Obenseuer mods, you must first have BepInEx installed.
-Once that is done, put FixMyChoo.dll in the Obenseuer/BepInEx/plugins folder.
+Just like all other Obenseuer mods, you must first have BepInEx installed (https://stalburg.net/Obenseuer/Modding).
+Once that is done, extract the .zip to your Obenseuer/BepInEx/plugins folder.  It should result in a folder structure of: Obenseuer/BepInEx/plugins/FixMyChoo
+If you have an older version of the mod that was a dll placed directly in the plugins folder, please delete that dll.
 
 ## Configuration
 
