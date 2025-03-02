@@ -1,7 +1,9 @@
 ﻿using FixMyChoo.Patches;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
+using UnityEngine;
 
 namespace FixMyChoo
 {
@@ -24,11 +26,14 @@ namespace FixMyChoo
         {
             IsLoading = false;
 
+            Plugin.Log.LogInfo("FixMyChoo -> OnLoadingDone");
+
             if (Plugin.Settings.RerailTrains.Value)
             {
                 TrackTrainRerail.FixupAllTrainAxles();
             }
-            
+
+            Plugin.instance?.SavegameLoaded();
         }
 
         public void OnLoadingStart()
