@@ -5,6 +5,11 @@ using System.Text;
 using HarmonyLib;
 using static TrackTrain.TrainData;
 
+// ALERT!
+// This functionality has been implemented (in a different yet still valid) way by Loiste/Oskutin in the vanilla Obenseur codebase
+// This file/feature will be removed after public testing has confirmed that this approach is no longer required.
+// The default enable state for this patch has been set to false with v1.0.2 of FixMyChoo.
+
 namespace FixMyChoo.Patches
 {
     public class TrackTrainRerail

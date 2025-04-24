@@ -37,12 +37,8 @@ public class Plugin : BaseUnityPlugin
 
         if (Settings.RerailTrains.Value)
         {
-            Log.LogInfo($" Patching derailed train recovery.");
+            Log.LogInfo($" Patching derailed train recovery (YOU PROBABLY SHOULDN'T BE DOING THIS!).");
             myHarmony.PatchAll(typeof(TrackTrainRerail));
-        }
-        if (Settings.UpdateCouplerVisualsOnLoad.Value)
-        {
-            myHarmony.PatchAll(typeof(TrainVisualPatches));
         }
     }
 
